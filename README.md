@@ -1,6 +1,6 @@
 # gohttp
 
-A simple HTTP client for Go with essential features.
+A simple HTTP client for Go with some features.
 
 # features
 
