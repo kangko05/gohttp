@@ -14,7 +14,7 @@ type Client struct {
 	retries int
 }
 
-func NewClient(ctx context.Context) *Client {
+func NewClient(ctx context.Context, options ...Option) *Client {
 	jar, _ := cookiejar.New(nil)
 
 	cl := &http.Client{
@@ -26,6 +26,10 @@ func NewClient(ctx context.Context) *Client {
 		cl:      cl,
 		timeout: 30 * time.Second,
 		retries: 3,
+	}
+
+	for _, opt := range options {
+		opt(client)
 	}
 
 	return client

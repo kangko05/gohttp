@@ -2,7 +2,6 @@ package gohttp
 
 import (
 	"context"
-	"math/rand/v2"
 	"time"
 )
 
@@ -30,8 +29,7 @@ func NewRateLimiter(ctx context.Context, maxTokens int) *RateLimiter {
 }
 
 func (rl *RateLimiter) start() {
-	jitter := time.Duration(rand.IntN(1000)) * time.Millisecond
-	ticker := time.NewTicker((time.Second / time.Duration(rl.maxTokens)) + jitter)
+	ticker := time.NewTicker((time.Second / time.Duration(rl.maxTokens)))
 
 	for {
 		select {
