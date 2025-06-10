@@ -22,8 +22,10 @@ func NewClient(ctx context.Context, options ...Option) *Client {
 	}
 
 	client := &Client{
-		ctx:     ctx,
-		cl:      cl,
+		ctx: ctx,
+		cl:  cl,
+
+		// default values
 		timeout: 30 * time.Second,
 		retries: 3,
 	}
